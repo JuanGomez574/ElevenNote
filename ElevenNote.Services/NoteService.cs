@@ -51,8 +51,6 @@ namespace ElevenNote.Services
                                     Title = e.Title,
                                     CreatedUtc = e.CreatedUtc
                                 }
-
-
                                 );
 
                 return query.ToArray();
