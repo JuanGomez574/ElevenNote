@@ -13,10 +13,22 @@ namespace ElevenNote.WebAPI.Controllers
     [Authorize]
     public class NoteController : ApiController
     {
+        public IHttpActionResult Put(NoteEdit note)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreateNoteService();
+
+            if (!service.UpdateNote(note))
+                return InternalServerError();
+
+            return Ok();
+        }
         public IHttpActionResult Get(int id)
         {
             NoteService noteService = CreateNoteService();
-            var note = noteService.GetNoteById(id);
+            var note = noteService.GetNoteById(id); // got the note from the database, shows how the WebApi.Controllers and services interact
             return Ok(note);
         }
         public IHttpActionResult Get()
