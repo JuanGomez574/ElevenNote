@@ -26,7 +26,7 @@ namespace ElevenNote.Data
 
         // One to many relationship. One category can have many notes
         [ForeignKey(nameof(Category))]
-        public int CategoryID { get; set; }
+        public int? CategoryID { get; set; }
         public virtual Category Category { get; set; }
 
     }
